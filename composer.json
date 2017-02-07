@@ -1,0 +1,35 @@
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../wrike-php-*",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
+    "name": "zibios/wrike-php-guzzle",
+    "description": "HTTP Client and exception transformer adapter for Wrike PHP Library, based on Guzzle package",
+    "keywords": ["wrike", "wrike.com", "api", "sdk", "library", "guzzle", "client", "REST", "HTTP", "php"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zbigniew Ślązak"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "zibios/wrike-php-library": "dev-master",
+        "guzzlehttp/guzzle": ">=4.0,<7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.0,<7.0"
+    },
+    "autoload": {
+        "psr-4": {"Zibios\\WrikePhpGuzzle\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": { "Zibios\\WrikePhpGuzzle\\Tests\\": "tests/" }
+    }
+}
