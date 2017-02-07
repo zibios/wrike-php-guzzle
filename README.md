@@ -25,6 +25,7 @@ Project status
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/8a8a49af-f1a6-40c9-97c6-dda145e8a75c/mini.png)](https://insight.sensiolabs.com/projects/8a8a49af-f1a6-40c9-97c6-dda145e8a75c)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b24d23368ad4971a0fbf47ed0457e86)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
+[![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-guzzle/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-guzzle/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
 [![Dependency Status](https://www.versioneye.com/user/projects/5899f1dec71294004db15114/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5899f1dec71294004db15114)
 
