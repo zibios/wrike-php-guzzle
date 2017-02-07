@@ -21,19 +21,19 @@ Collection of all badges for package
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-guzzle.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-guzzle)
 
 **VersionEye**
-[![Dependency Status](https://www.versioneye.com/user/projects/{ToDo}/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/{ToDo})
+[![Dependency Status](https://www.versioneye.com/user/projects/5899f1dec71294004db15114/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5899f1dec71294004db15114)
 
 **Travis**
 [![Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
 
 **SensioLabs Insight**
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/ToDo}/mini.png)](https://insight.sensiolabs.com/projects/ToDo})
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/ToDo}.svg)](https://insight.sensiolabs.com/projects/ToDo})
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/8a8a49af-f1a6-40c9-97c6-dda145e8a75c/mini.png)](https://insight.sensiolabs.com/projects/8a8a49af-f1a6-40c9-97c6-dda145e8a75c)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/8a8a49af-f1a6-40c9-97c6-dda145e8a75c.svg)](https://insight.sensiolabs.com/projects/8a8a49af-f1a6-40c9-97c6-dda145e8a75c)
 
 **Codacy**
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/{ToDo})](https://www.codacy.com/app/zibios/wrike-php-guzzle)
-[![Codacy grade](https://img.shields.io/codacy/grade/ToDo}.svg)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/ToDo}.svg)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b24d23368ad4971a0fbf47ed0457e86)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
+[![Codacy grade](https://img.shields.io/codacy/grade/1b24d23368ad4971a0fbf47ed0457e86.svg)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/1b24d23368ad4971a0fbf47ed0457e86.svg)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
 
 **Code Climate**
 [![Code Climate](https://codeclimate.com/github/zibios/wrike-php-guzzle/badges/gpa.svg)](https://codeclimate.com/github/zibios/wrike-php-guzzle)
