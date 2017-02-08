@@ -69,6 +69,16 @@ class GuzzleClient extends BaseClient implements ClientInterface
     }
 
     /**
+     * @param \Exception $exception
+     *
+     * @return \Exception|ApiException
+     */
+    public function transformApiException(\Exception $exception)
+    {
+        return $this->apiExceptionTransformer->transform($exception);
+    }
+
+    /**
      * @param string $requestMethod
      * @param string $path
      * @param array $params
@@ -113,21 +123,11 @@ class GuzzleClient extends BaseClient implements ClientInterface
             default:
                 throw new \InvalidArgumentException();
         }
-        $options['headers'] = [
-            'Content-Type' => 'application/json',
-            'Authorization' => sprintf('Bearer %s', $this->bearerToken),
-        ];
+        $options['headers']['Content-Type'] = 'application/json';
+        if ($this->bearerToken !== '') {
+            $options['headers']['Authorization'] = sprintf('Bearer %s', $this->bearerToken);
+        }
 
         return $options;
-    }
-
-    /**
-     * @param \Exception $exception
-     *
-     * @return \Exception|ApiException
-     */
-    public function transformApiException(\Exception $exception)
-    {
-        return $this->apiExceptionTransformer->transform($exception);
     }
 }
