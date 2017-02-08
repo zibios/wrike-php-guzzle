@@ -103,14 +103,14 @@ class GuzzleClient extends BaseClient implements ClientInterface
      */
     protected function calculateOptionsForParams($requestMethod, array $params)
     {
-        $requestMethod = strtoupper($requestMethod);
-        $options = [];
+        $options = $this->prepareBaseOptions();
+        if (count($params) === 0) {
+            return $options;
+        }
 
         switch ($requestMethod) {
             case RequestMethodEnum::GET:
-                if (count($params) > 0) {
-                    $options['query'] = $params;
-                }
+                $options['query'] = $params;
                 break;
             case RequestMethodEnum::PUT:
             case RequestMethodEnum::POST:
@@ -123,9 +123,20 @@ class GuzzleClient extends BaseClient implements ClientInterface
             default:
                 throw new \InvalidArgumentException();
         }
+
+        return $options;
+    }
+
+    /**
+     * @return array
+     */
+    protected function prepareBaseOptions()
+    {
         $options['headers']['Content-Type'] = 'application/json';
         if ($this->bearerToken !== '') {
             $options['headers']['Authorization'] = sprintf('Bearer %s', $this->bearerToken);
+
+            return $options;
         }
 
         return $options;

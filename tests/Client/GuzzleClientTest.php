@@ -119,6 +119,6 @@ class GuzzleClientTest extends TestCase
     {
         $clientMock = self::getMock(GuzzleClient::class, ['request'], [new RawTransformer()]);
 
-        $clientMock->executeRequestForParams('wrong', 'path', []);
+        $clientMock->executeRequestForParams('wrong', 'path', ['test' => 'value']);
     }
 }
