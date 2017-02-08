@@ -113,20 +113,12 @@ class GuzzleClientTest extends TestCase
     }
 
     /**
-     * @param string $requestMethod
-     * @param string $path
-     * @param array $params
-     * @param array $options
-     *
-     * @dataProvider executeRequestForParamsProvider
+     * @expectedException \InvalidArgumentException
      */
-    public function test_executeRequestForParamsWithBearerToken($requestMethod, $path, $params, $options)
+    public function test_executeRequestForParamsWithException()
     {
         $clientMock = self::getMock(GuzzleClient::class, ['request'], [new RawTransformer()]);
-        $clientMock->expects(self::any())
-            ->method('request')
-            ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
 
-        $clientMock->executeRequestForParams($requestMethod, $path, $params);
+        $clientMock->executeRequestForParams('wrong', 'path', []);
     }
 }
