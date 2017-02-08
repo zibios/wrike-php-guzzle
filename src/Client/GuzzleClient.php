@@ -132,11 +132,10 @@ class GuzzleClient extends BaseClient implements ClientInterface
      */
     protected function prepareBaseOptions()
     {
+        $options = [];
         $options['headers']['Content-Type'] = 'application/json';
         if ($this->bearerToken !== '') {
             $options['headers']['Authorization'] = sprintf('Bearer %s', $this->bearerToken);
-
-            return $options;
         }
 
         return $options;
