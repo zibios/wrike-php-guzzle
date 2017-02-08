@@ -60,7 +60,7 @@ Reference
 
 [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
 
-[Wrike API Documentation](https://developers.wrike.com/documentation/api/overview)
+Official [Wrike API Documentation](https://developers.wrike.com/documentation/api/overview)
 
 License
 -------

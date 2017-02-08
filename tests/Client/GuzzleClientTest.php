@@ -30,4 +30,33 @@ class GuzzleClientTest extends TestCase
         self::assertInstanceOf(GuzzleClient::class, $client);
         self::assertInstanceOf(ClientInterface::class, $client);
     }
+
+    /**
+     * Test exception inheritance
+     */
+    public function test_getSetBearerToken()
+    {
+        $testBearerToken = 'test';
+        $apiExceptionTransformerMock = $this->getMock(WrikeTransformer::class);
+        $client = new GuzzleClient($apiExceptionTransformerMock, []);
+
+        self::assertEquals('', $client->getBearerToken());
+        self::assertSame($client, $client->setBearerToken($testBearerToken));
+        self::assertEquals($testBearerToken, $client->getBearerToken());
+    }
+
+    /**
+     * Test exception inheritance
+     *
+     * @expectedException \InvalidArgumentException
+     */
+    public function test_setWrongBearerToken()
+    {
+        $testBearerToken = null;
+        $apiExceptionTransformerMock = $this->getMock(WrikeTransformer::class);
+        $client = new GuzzleClient($apiExceptionTransformerMock, []);
+
+        self::assertEquals('', $client->getBearerToken());
+        self::assertSame($client, $client->setBearerToken($testBearerToken));
+    }
 }

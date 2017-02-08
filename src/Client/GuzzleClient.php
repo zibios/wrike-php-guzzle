@@ -60,8 +60,8 @@ class GuzzleClient extends BaseClient implements ClientInterface
      */
     public function setBearerToken($bearerToken)
     {
-        if (is_string($bearerToken) === false || trim($bearerToken) === '') {
-            throw new \InvalidArgumentException('Bearer Token should be a none empty string!');
+        if (is_string($bearerToken) === false) {
+            throw new \InvalidArgumentException('Bearer Token should be a string!');
         }
         $this->bearerToken = $bearerToken;
 
@@ -78,6 +78,20 @@ class GuzzleClient extends BaseClient implements ClientInterface
      * @throws \Exception|ApiException
      */
     public function executeRequestForParams($requestMethod, $path, array $params)
+    {
+        $options = $this->calculateOptionsForParams($requestMethod, $params);
+
+        return $this->request($requestMethod, $path, $options);
+    }
+
+    /**
+     * @param string $requestMethod
+     * @param array $params
+     *
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    protected function calculateOptionsForParams($requestMethod, array $params)
     {
         $requestMethod = strtoupper($requestMethod);
         $options = [];
@@ -104,7 +118,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
             'Authorization' => sprintf('Bearer %s', $this->bearerToken),
         ];
 
-       return $this->request($requestMethod, $path, $options);
+        return $options;
     }
 
     /**

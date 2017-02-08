@@ -14,6 +14,8 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
@@ -113,6 +115,7 @@ class WrikeTransformerTest extends TestCase
             [ServerErrorException::STATUS_CODE, sprintf('{"without_error_property":"%s"}', ServerErrorException::STATUS_NAME), ApiException::class],
             [ServerErrorException::STATUS_CODE, sprintf('{"error":" %s"}', ServerErrorException::STATUS_NAME), ApiException::class],
             [ServerErrorException::STATUS_CODE, '{}', ApiException::class],
+            [ServerErrorException::STATUS_CODE, '{"errorDescription":"description", "error":NULL}', ApiException::class],
             [ServerErrorException::STATUS_CODE, 'malformed json body', ApiException::class],
             [ServerErrorException::STATUS_CODE, null, ApiException::class],
         ];
@@ -139,5 +142,25 @@ class WrikeTransformerTest extends TestCase
         $exception = BadResponseException::create($requestMock, $responseMock);
         $normalizedException = $transformer->transform($exception);
         self::assertInstanceOf($expectedExceptionClass, $normalizedException, sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException)));
+    }
+
+    public function test_unexpectedExceptionDuringTransform()
+    {
+        $testException = new \Exception();
+        $transformer = new WrikeTransformer();
+
+        $requestMock = self::getMock(RequestInterface::class);
+        $responseMock = self::getMock(ResponseInterface::class);
+        $responseMock->expects(self::any())
+            ->method('getStatusCode')
+            ->willReturn(0);
+        $responseMock->expects(self::any())
+            ->method('getBody')
+            ->willThrowException($testException);
+
+        $exceptionMock = self::getMockForAbstractClass(BadResponseException::class, ['test', $requestMock, $responseMock]);
+
+        self::assertInstanceOf(ApiException::class, $transformer->transform($exceptionMock));
+        self::assertSame($exceptionMock, $transformer->transform($exceptionMock)->getPrevious());
     }
 }

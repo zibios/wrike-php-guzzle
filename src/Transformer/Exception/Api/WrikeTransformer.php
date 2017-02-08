@@ -22,7 +22,7 @@ class WrikeTransformer extends AbstractApiExceptionTransformer
     /**
      * @param \Exception $exception
      *
-     * @return \Exception
+     * @return \Exception|ApiException
      */
     public function transform(\Exception $exception)
     {
