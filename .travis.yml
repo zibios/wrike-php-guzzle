@@ -6,15 +6,20 @@ php:
   - '7.1'
   - hhvm
 before_script:
+  - composer self-update
   - composer require codeclimate/php-test-reporter --dev
+  - composer require sensiolabs/security-checker --dev
+  - composer require satooshi/php-coveralls --dev
   - composer install
 script:
   - mkdir -p build
   - vendor/bin/phpunit --coverage-clover build/clover.xml
+  - vendor/bin/security-checker security:check
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover build/clover.xml
   - vendor/bin/test-reporter --coverage-report=build/clover.xml
+  - vendor/bin/coveralls
 addons:
   code_climate:
     repo_token: f93d8700fc7d2aaa8ddc92cd38162ae2037605b8295f016d5c30dfdb02a2bb5c
