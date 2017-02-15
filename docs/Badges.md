@@ -20,9 +20,6 @@ Collection of all badges for package
 **Libraries.io**
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-guzzle.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-guzzle)
 
-**VersionEye**
-[![Dependency Status](https://www.versioneye.com/user/projects/5899f1dec71294004db15114/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5899f1dec71294004db15114)
-
 **Travis**
 [![Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
 
