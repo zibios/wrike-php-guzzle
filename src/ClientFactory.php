@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpGuzzle package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -15,13 +16,14 @@ use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpLibrary\Api;
 
 /**
- * Client Factory
+ * Client Factory.
  */
 class ClientFactory
 {
     /**
-     * @return GuzzleClient
      * @throws \InvalidArgumentException
+     *
+     * @return GuzzleClient
      */
     public static function create()
     {

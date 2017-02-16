@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -15,7 +16,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Transformer\AbstractApiExceptionTransformer;
 
 /**
- * Wrike Transformer
+ * Wrike Transformer.
  */
 class WrikeTransformer extends AbstractApiExceptionTransformer
 {

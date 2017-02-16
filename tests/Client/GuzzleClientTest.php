@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpGuzzle package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -12,18 +13,18 @@ namespace Zibios\WrikePhpGuzzle\Tests\Client;
 
 use GuzzleHttp\ClientInterface;
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
-use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
+use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Transformer\Exception\Api\RawTransformer;
 
 /**
- * Guzzle Client Test
+ * Guzzle Client Test.
  */
 class GuzzleClientTest extends TestCase
 {
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      */
     public function test_ExtendProperClasses()
     {
@@ -35,7 +36,7 @@ class GuzzleClientTest extends TestCase
     }
 
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      */
     public function test_getSetBearerToken()
     {
@@ -49,7 +50,7 @@ class GuzzleClientTest extends TestCase
     }
 
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      *
      * @expectedException \InvalidArgumentException
      */
@@ -96,8 +97,8 @@ class GuzzleClientTest extends TestCase
      * @param string $bearerToken
      * @param string $requestMethod
      * @param string $path
-     * @param array $params
-     * @param array $options
+     * @param array  $params
+     * @param array  $options
      *
      * @dataProvider executeRequestForParamsProvider
      */

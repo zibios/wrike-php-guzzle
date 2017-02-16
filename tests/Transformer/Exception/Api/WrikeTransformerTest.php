@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -16,8 +17,8 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
+use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException;
@@ -30,7 +31,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException;
 use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 
 /**
- * Wrike Transformer Test
+ * Wrike Transformer Test.
  */
 class WrikeTransformerTest extends TestCase
 {
@@ -66,7 +67,7 @@ class WrikeTransformerTest extends TestCase
     }
 
     /**
-     * @param int $errorStatusCode
+     * @param int    $errorStatusCode
      * @param string $errorStatusName
      * @param string $expectedExceptionClass
      *
@@ -122,8 +123,8 @@ class WrikeTransformerTest extends TestCase
     }
 
     /**
-     * @param int $errorStatusCode
-     * @param mixed $body
+     * @param int    $errorStatusCode
+     * @param mixed  $body
      * @param string $expectedExceptionClass
      *
      * @dataProvider malformedBodyProvider

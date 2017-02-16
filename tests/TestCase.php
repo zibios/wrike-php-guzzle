@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpGuzzle package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,9 +12,8 @@
 namespace Zibios\WrikePhpGuzzle\Tests;
 
 /**
- * Test Case
+ * Test Case.
  */
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-
 }

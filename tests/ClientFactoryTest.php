@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpGuzzle package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -16,7 +17,7 @@ use Zibios\WrikePhpGuzzle\ClientFactory;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 
 /**
- * Client Factory Test
+ * Client Factory Test.
  */
 class ClientFactoryTest extends TestCase
 {

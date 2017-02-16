@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpGuzzle package.
+
+/*
+ * This file is part of the zibios/wrike-php-guzzle package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -18,7 +19,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 
 /**
- * Guzzle Client
+ * Guzzle Client.
  */
 class GuzzleClient extends BaseClient implements ClientInterface
 {
@@ -36,7 +37,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
      * Client constructor.
      *
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer
-     * @param array $config
+     * @param array                            $config
      */
     public function __construct(ApiExceptionTransformerInterface $apiExceptionTransformer, array $config = [])
     {
@@ -55,8 +56,9 @@ class GuzzleClient extends BaseClient implements ClientInterface
     /**
      * @param string $bearerToken
      *
-     * @return $this
      * @throws \InvalidArgumentException
+     *
+     * @return $this
      */
     public function setBearerToken($bearerToken)
     {
@@ -81,11 +83,12 @@ class GuzzleClient extends BaseClient implements ClientInterface
     /**
      * @param string $requestMethod
      * @param string $path
-     * @param array $params
+     * @param array  $params
      *
-     * @return ResponseInterface
      * @throws \InvalidArgumentException
      * @throws \Exception|ApiException
+     *
+     * @return ResponseInterface
      */
     public function executeRequestForParams($requestMethod, $path, array $params)
     {
@@ -96,10 +99,11 @@ class GuzzleClient extends BaseClient implements ClientInterface
 
     /**
      * @param string $requestMethod
-     * @param array $params
+     * @param array  $params
+     *
+     * @throws \InvalidArgumentException
      *
      * @return array
-     * @throws \InvalidArgumentException
      */
     protected function calculateOptionsForParams($requestMethod, array $params)
     {
