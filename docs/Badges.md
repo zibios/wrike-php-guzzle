@@ -41,3 +41,6 @@ Collection of all badges for package
 
 **Coveralls**
 [![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg)](https://coveralls.io/github/zibios/wrike-php-guzzle)
+
+**StyleCI**
+[![StyleCI](https://styleci.io/repos/81218835/shield?branch=master)](https://styleci.io/repos/81218835)
