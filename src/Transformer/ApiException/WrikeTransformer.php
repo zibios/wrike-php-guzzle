@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpGuzzle\Transformer\Exception\Api;
+namespace Zibios\WrikePhpGuzzle\Transformer\ApiException;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
-use Zibios\WrikePhpLibrary\Transformer\AbstractApiExceptionTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransformer;
 
 /**
  * Wrike Transformer.

@@ -14,7 +14,6 @@ namespace Zibios\WrikePhpGuzzle\Tests;
 use GuzzleHttp\ClientInterface;
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
 use Zibios\WrikePhpGuzzle\ClientFactory;
-use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 
 /**
  * Client Factory Test.
@@ -26,7 +25,5 @@ class ClientFactoryTest extends TestCase
         $client = ClientFactory::create();
         self::assertInstanceOf(ClientInterface::class, $client);
         self::assertInstanceOf(GuzzleClient::class, $client);
-        $normalizedException = $client->transformApiException(new \Exception());
-        self::assertInstanceOf(ApiException::class, $normalizedException);
     }
 }

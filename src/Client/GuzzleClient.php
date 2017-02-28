@@ -13,45 +13,24 @@ namespace Zibios\WrikePhpGuzzle\Client;
 
 use GuzzleHttp\Client as BaseClient;
 use Psr\Http\Message\ResponseInterface;
+use Zibios\WrikePhpLibrary\Api;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
-use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
+use Zibios\WrikePhpLibrary\Traits\AssertIsValidBearerToken;
 
 /**
  * Guzzle Client.
  */
 class GuzzleClient extends BaseClient implements ClientInterface
 {
+    use AssertIsValidBearerToken;
+
     /**
      * @var string
      */
     protected $bearerToken = '';
-
-    /**
-     * @var ApiExceptionTransformerInterface
-     */
-    protected $apiExceptionTransformer;
-
-    /**
-     * Client constructor.
-     *
-     * @param ApiExceptionTransformerInterface $apiExceptionTransformer
-     * @param array                            $config
-     */
-    public function __construct(ApiExceptionTransformerInterface $apiExceptionTransformer, array $config = [])
-    {
-        $this->apiExceptionTransformer = $apiExceptionTransformer;
-        parent::__construct($config);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBearerToken()
-    {
-        return $this->bearerToken;
-    }
 
     /**
      * @param string $bearerToken
@@ -62,22 +41,18 @@ class GuzzleClient extends BaseClient implements ClientInterface
      */
     public function setBearerToken($bearerToken)
     {
-        if (is_string($bearerToken) === false) {
-            throw new \InvalidArgumentException('Bearer Token should be a string!');
-        }
+        $this->assertIsValidBearerToken($bearerToken);
         $this->bearerToken = $bearerToken;
 
         return $this;
     }
 
     /**
-     * @param \Exception $exception
-     *
-     * @return \Exception|ApiException
+     * @return string
      */
-    public function transformApiException(\Exception $exception)
+    public function getResponseFormat()
     {
-        return $this->apiExceptionTransformer->transform($exception);
+        return ResponseFormatEnum::PSR_RESPONSE;
     }
 
     /**
@@ -141,6 +116,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
         if ($this->bearerToken !== '') {
             $options['headers']['Authorization'] = sprintf('Bearer %s', $this->bearerToken);
         }
+        $options['base_uri'] = Api::BASE_URI;
 
         return $options;
     }

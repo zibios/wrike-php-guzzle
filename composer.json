@@ -1,4 +1,13 @@
 {
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../wrike-php-*",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "name": "zibios/wrike-php-guzzle",
     "description": "HTTP Client and exception transformer adapter for Wrike PHP Library, based on Guzzle package",
     "keywords": ["wrike", "wrike.com", "api", "sdk", "library", "guzzle", "client", "REST", "HTTP", "php"],

@@ -14,9 +14,7 @@ namespace Zibios\WrikePhpGuzzle\Tests\Client;
 use GuzzleHttp\ClientInterface;
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
-use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
-use Zibios\WrikePhpLibrary\Transformer\Exception\Api\RawTransformer;
 
 /**
  * Guzzle Client Test.
@@ -28,39 +26,27 @@ class GuzzleClientTest extends TestCase
      */
     public function test_ExtendProperClasses()
     {
-        $apiExceptionTransformerMock = $this->getMock(WrikeTransformer::class);
-        $client = new GuzzleClient($apiExceptionTransformerMock, []);
-
+        $client = new GuzzleClient();
         self::assertInstanceOf(GuzzleClient::class, $client);
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    /**
-     * Test exception inheritance.
-     */
-    public function test_getSetBearerToken()
+    public function test_setBearerToken()
     {
         $testBearerToken = 'test';
-        $apiExceptionTransformerMock = $this->getMock(WrikeTransformer::class);
-        $client = new GuzzleClient($apiExceptionTransformerMock, []);
+        $client = new GuzzleClient();
 
-        self::assertEquals('', $client->getBearerToken());
         self::assertSame($client, $client->setBearerToken($testBearerToken));
-        self::assertEquals($testBearerToken, $client->getBearerToken());
     }
 
     /**
-     * Test exception inheritance.
-     *
      * @expectedException \InvalidArgumentException
      */
     public function test_setWrongBearerToken()
     {
         $testBearerToken = null;
-        $apiExceptionTransformerMock = $this->getMock(WrikeTransformer::class);
-        $client = new GuzzleClient($apiExceptionTransformerMock, []);
+        $client = new GuzzleClient();
 
-        self::assertEquals('', $client->getBearerToken());
         self::assertSame($client, $client->setBearerToken($testBearerToken));
     }
 
@@ -70,9 +56,9 @@ class GuzzleClientTest extends TestCase
     public function executeRequestForParamsProvider()
     {
         $testUri = '/test/uri';
-        $baseOptions['headers'] = [
-            'Content-Type' => 'application/json',
-        ];
+        $baseOptions['headers'] = ['Content-Type' => 'application/json'];
+        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
+
         $bearerToken = 'testBearerToken';
         $baseOptionsWithBearer = $baseOptions;
         $baseOptionsWithBearer['headers']['Authorization'] = sprintf('Bearer %s', $bearerToken);
@@ -104,7 +90,8 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForParams($bearerToken, $requestMethod, $path, $params, $options)
     {
-        $clientMock = self::getMock(GuzzleClient::class, ['request'], [new RawTransformer()]);
+        /** @var GuzzleClient $clientMock */
+        $clientMock = self::getMock(GuzzleClient::class, ['request']);
         $clientMock->expects(self::any())
             ->method('request')
             ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
@@ -118,7 +105,7 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForParamsWithException()
     {
-        $clientMock = self::getMock(GuzzleClient::class, ['request'], [new RawTransformer()]);
+        $clientMock = new GuzzleClient();
 
         $clientMock->executeRequestForParams('wrong', 'path', ['test' => 'value']);
     }

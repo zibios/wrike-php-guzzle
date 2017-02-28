@@ -12,8 +12,6 @@
 namespace Zibios\WrikePhpGuzzle;
 
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
-use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
-use Zibios\WrikePhpLibrary\Api;
 
 /**
  * Client Factory.
@@ -27,9 +25,6 @@ class ClientFactory
      */
     public static function create()
     {
-        return new GuzzleClient(
-            new WrikeTransformer(),
-            ['base_uri' => Api::BASE_URI]
-        );
+        return new GuzzleClient();
     }
 }

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpGuzzle\Tests\Transformer\Exception\Api;
+namespace Zibios\WrikePhpGuzzle\Tests\Transformer\ApiException;
 
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\TransferException;
@@ -18,7 +18,7 @@ use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
-use Zibios\WrikePhpGuzzle\Transformer\Exception\Api\WrikeTransformer;
+use Zibios\WrikePhpGuzzle\Transformer\ApiException\WrikeTransformer;
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException;
@@ -87,8 +87,16 @@ class WrikeTransformerTest extends TestCase
         $exception = BadResponseException::create($requestMock, $responseMock);
 
         $normalizedException = $transformer->transform($exception);
-        self::assertInstanceOf($expectedExceptionClass, $normalizedException, sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException)));
-        self::assertInstanceOf(ApiException::class, $normalizedException, sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException)));
+        self::assertInstanceOf(
+            $expectedExceptionClass,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+        );
+        self::assertInstanceOf(
+            ApiException::class,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+        );
     }
 
     public function test_networkException()
@@ -97,11 +105,19 @@ class WrikeTransformerTest extends TestCase
 
         $testException = new TransferException();
         $normalizedException = $transformer->transform($testException);
-        self::assertInstanceOf(ApiException::class, $normalizedException, sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException)));
+        self::assertInstanceOf(
+            ApiException::class,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+        );
 
         $testException = new \Exception();
         $normalizedException = $transformer->transform($testException);
-        self::assertInstanceOf(ApiException::class, $normalizedException, sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException)));
+        self::assertInstanceOf(
+            ApiException::class,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+        );
     }
 
     /**
@@ -142,7 +158,11 @@ class WrikeTransformerTest extends TestCase
         /** @var BadResponseException $exception */
         $exception = BadResponseException::create($requestMock, $responseMock);
         $normalizedException = $transformer->transform($exception);
-        self::assertInstanceOf($expectedExceptionClass, $normalizedException, sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException)));
+        self::assertInstanceOf(
+            $expectedExceptionClass,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+        );
     }
 
     public function test_unexpectedExceptionDuringTransform()
@@ -159,7 +179,10 @@ class WrikeTransformerTest extends TestCase
             ->method('getBody')
             ->willThrowException($testException);
 
-        $exceptionMock = self::getMockForAbstractClass(BadResponseException::class, ['test', $requestMock, $responseMock]);
+        $exceptionMock = self::getMockForAbstractClass(
+            BadResponseException::class,
+            ['test', $requestMock, $responseMock]
+        );
 
         self::assertInstanceOf(ApiException::class, $transformer->transform($exceptionMock));
         self::assertSame($exceptionMock, $transformer->transform($exceptionMock)->getPrevious());
