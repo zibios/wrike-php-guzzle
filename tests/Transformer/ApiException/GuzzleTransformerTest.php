@@ -18,7 +18,7 @@ use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
-use Zibios\WrikePhpGuzzle\Transformer\ApiException\WrikeTransformer;
+use Zibios\WrikePhpGuzzle\Transformer\ApiException\GuzzleTransformer;
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException;
@@ -33,7 +33,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 /**
  * Wrike Transformer Test.
  */
-class WrikeTransformerTest extends TestCase
+class GuzzleTransformerTest extends TestCase
 {
     /**
      * @return array
@@ -75,7 +75,7 @@ class WrikeTransformerTest extends TestCase
      */
     public function test_wrikeExceptions($errorStatusCode, $errorStatusName, $expectedExceptionClass)
     {
-        $transformer = new WrikeTransformer();
+        $transformer = new GuzzleTransformer();
 
         $requestMock = new Request('get', 'http://google.com');
         $responseMock = new Response(
@@ -101,7 +101,7 @@ class WrikeTransformerTest extends TestCase
 
     public function test_networkException()
     {
-        $transformer = new WrikeTransformer();
+        $transformer = new GuzzleTransformer();
 
         $testException = new TransferException();
         $normalizedException = $transformer->transform($testException);
@@ -147,7 +147,7 @@ class WrikeTransformerTest extends TestCase
      */
     public function test_malformedResponseBodyException($errorStatusCode, $body, $expectedExceptionClass)
     {
-        $transformer = new WrikeTransformer();
+        $transformer = new GuzzleTransformer();
 
         $requestMock = new Request('get', 'http://google.com');
         $responseMock = new Response(
@@ -168,7 +168,7 @@ class WrikeTransformerTest extends TestCase
     public function test_unexpectedExceptionDuringTransform()
     {
         $testException = new \Exception();
-        $transformer = new WrikeTransformer();
+        $transformer = new GuzzleTransformer();
 
         $requestMock = self::getMock(RequestInterface::class);
         $responseMock = self::getMock(ResponseInterface::class);

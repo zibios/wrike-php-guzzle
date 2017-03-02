@@ -16,9 +16,9 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransformer;
 
 /**
- * Wrike Transformer.
+ * Guzzle Exception Transformer.
  */
-class WrikeTransformer extends AbstractApiExceptionTransformer
+class GuzzleTransformer extends AbstractApiExceptionTransformer
 {
     /**
      * @param \Exception $exception

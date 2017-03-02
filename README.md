@@ -1,9 +1,7 @@
 Wrike PHP GUZZLE
 ================================
 
-**Proof of Concept - NOT YET USABLE!!!**
-
-**First usable version around 2017-03-01**
+**Alpha version, first usable version around 2017-03-06**
 
 Introduction
 ------------
@@ -11,9 +9,7 @@ Introduction
 **This is HTTP Client plugin for [Wrike PHP Library](https://github.com/zibios/wrike-php-library).**
 
 For general purpose please check [full configured Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk).
-For none standard purposes please check [generic Wrike PHP Library](https://github.com/zibios/wrike-php-library),
-[HTTP Client plugin](https://github.com/zibios/wrike-php-guzzle),
-and [response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer).
+For none standard purposes please check [generic Wrike PHP Library](https://github.com/zibios/wrike-php-library).
 
 Project status
 --------------
@@ -52,6 +48,39 @@ Run PHPUnit tests:
 ./vendor/bin/phpunit
 ``` 
 
+Usage
+------------
+All \GuzzleHttp\Client methods plus methods for \Zibios\WrikePhpLibrary\Client\ClientInterface.
+
+```php
+/**
+ * Standard usage
+ */
+$client = ClientFactory::create();
+
+/**
+ * @see \Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum
+ *
+ * @return string 'PsrResponse'
+ */
+$client->getResponseFormat();
+
+/**
+ * @param string $requestMethod GT/POST/PUT/DELETE
+ * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
+ * @param array  $params        optional params for GET/POST request
+ * @param string $accessToken   Access Token for Wrike access
+ *
+ * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum
+ * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
+ *
+ * @return string|\Psr\Http\Message\ResponseInterface
+ */
+$client->executeRequestForParams($requestMethod, $path, array $params, $accessToken);
+
+// + all methods from \GuzzleHttp\Client
+```
+
 
 Reference
 ---------
@@ -59,8 +88,6 @@ Reference
 [Wrike PHP Library](https://github.com/zibios/wrike-php-library)
 
 [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
-
-Official [Wrike API Documentation](https://developers.wrike.com/documentation/api/overview)
 
 License
 -------

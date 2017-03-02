@@ -31,82 +31,87 @@ class GuzzleClientTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    public function test_setBearerToken()
-    {
-        $testBearerToken = 'test';
-        $client = new GuzzleClient();
-
-        self::assertSame($client, $client->setBearerToken($testBearerToken));
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function test_setWrongBearerToken()
-    {
-        $testBearerToken = null;
-        $client = new GuzzleClient();
-
-        self::assertSame($client, $client->setBearerToken($testBearerToken));
-    }
-
     /**
      * @return array
      */
-    public function executeRequestForParamsProvider()
+    public function paramsProvider()
     {
+        $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
         $baseOptions['headers'] = ['Content-Type' => 'application/json'];
         $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
-
-        $bearerToken = 'testBearerToken';
-        $baseOptionsWithBearer = $baseOptions;
-        $baseOptionsWithBearer['headers']['Authorization'] = sprintf('Bearer %s', $bearerToken);
+        $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
         return [
-            // [bearerToken, requestMethod, path, params, options]
-            ['', RequestMethodEnum::GET, $testUri, [], $baseOptions],
-            ['', RequestMethodEnum::GET, $testUri, ['test' => 'query'], $baseOptions + ['query' => ['test' => 'query']]],
-            ['', RequestMethodEnum::DELETE, $testUri, [], $baseOptions],
-            ['', RequestMethodEnum::DELETE, $testUri, ['test' => 'query'], $baseOptions],
-            ['', RequestMethodEnum::PUT, $testUri, [], $baseOptions],
-            ['', RequestMethodEnum::PUT, $testUri, ['test' => 'query'], $baseOptions + ['json' => ['test' => 'query']]],
-            ['', RequestMethodEnum::POST, $testUri, [], $baseOptions],
-            ['', RequestMethodEnum::POST, $testUri, ['test' => 'query'], $baseOptions + ['json' => ['test' => 'query']]],
-
-            [$bearerToken, RequestMethodEnum::GET, $testUri, [], $baseOptionsWithBearer],
-            [$bearerToken, RequestMethodEnum::GET, $testUri, ['test' => 'query'], $baseOptionsWithBearer + ['query' => ['test' => 'query']]],
+            // [accessToken, requestMethod, path, params, options]
+            [$accessToken, RequestMethodEnum::GET, $testUri, [], $baseOptions],
+            [$accessToken, RequestMethodEnum::GET, $testUri, ['test' => 'query'], ['query' => ['test' => 'query']] + $baseOptions],
+            [$accessToken, RequestMethodEnum::DELETE, $testUri, [], $baseOptions],
+            [$accessToken, RequestMethodEnum::DELETE, $testUri, ['test' => 'query'], $baseOptions],
+            [$accessToken, RequestMethodEnum::PUT, $testUri, [], $baseOptions],
+            [$accessToken, RequestMethodEnum::PUT, $testUri, ['test' => 'query'], ['json' => ['test' => 'query']] + $baseOptions],
+            [$accessToken, RequestMethodEnum::POST, $testUri, [], $baseOptions],
+            [$accessToken, RequestMethodEnum::POST, $testUri, ['test' => 'query'], ['json' => ['test' => 'query']] + $baseOptions],
         ];
     }
 
     /**
-     * @param string $bearerToken
+     * @param string $accessToken
      * @param string $requestMethod
      * @param string $path
      * @param array  $params
      * @param array  $options
      *
-     * @dataProvider executeRequestForParamsProvider
+     * @dataProvider paramsProvider
      */
-    public function test_executeRequestForParams($bearerToken, $requestMethod, $path, $params, $options)
+    public function test_executeRequestForParams($accessToken, $requestMethod, $path, $params, $options)
     {
         /** @var GuzzleClient $clientMock */
         $clientMock = self::getMock(GuzzleClient::class, ['request']);
         $clientMock->expects(self::any())
             ->method('request')
             ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
-        $clientMock->setBearerToken($bearerToken);
 
-        $clientMock->executeRequestForParams($requestMethod, $path, $params);
+        $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @return array
      */
-    public function test_executeRequestForParamsWithException()
+    public function wrongParamsProvider()
     {
-        $clientMock = new GuzzleClient();
+        $accessToken = 'testBearerToken';
+        $testUri = '/test/uri';
+        $baseOptions['headers'] = ['Content-Type' => 'application/json'];
+        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
+        $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
-        $clientMock->executeRequestForParams('wrong', 'path', ['test' => 'value']);
+        return [
+            // [accessToken, requestMethod, path, params, options]
+            ['', RequestMethodEnum::GET, $testUri, [], $baseOptions],
+            [null, RequestMethodEnum::GET, $testUri, [], $baseOptions],
+            [$accessToken, 'WRONG_METHOD', $testUri, [], $baseOptions],
+        ];
+    }
+
+    /**
+     * @param string $accessToken
+     * @param string $requestMethod
+     * @param string $path
+     * @param array  $params
+     * @param array  $options
+     *
+     * @dataProvider wrongParamsProvider
+     */
+    public function test_executeRequestForWrongParams($accessToken, $requestMethod, $path, $params, $options)
+    {
+        self::setExpectedException(\InvalidArgumentException::class);
+        /** @var GuzzleClient $clientMock */
+        $clientMock = self::getMock(GuzzleClient::class, ['request']);
+        $clientMock->expects(self::any())
+            ->method('request')
+            ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
+
+        $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
     }
 }
