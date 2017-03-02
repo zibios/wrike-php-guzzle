@@ -81,7 +81,6 @@ $client->executeRequestForParams($requestMethod, $path, array $params, $accessTo
 // + all methods from \GuzzleHttp\Client
 ```
 
-
 Reference
 ---------
 
