@@ -107,7 +107,6 @@ class GuzzleClient extends BaseClient implements ClientInterface
     {
         AccessTokenValidator::assertIsValid($accessToken);
         $options = [];
-        $options['headers']['Content-Type'] = 'application/json';
         $options['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
         $options['base_uri'] = Api::BASE_URI;
 
