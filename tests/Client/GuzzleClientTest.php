@@ -38,7 +38,6 @@ class GuzzleClientTest extends TestCase
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
-        $baseOptions['headers'] = ['Content-Type' => 'application/json'];
         $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
         $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
@@ -47,11 +46,11 @@ class GuzzleClientTest extends TestCase
             [$accessToken, RequestMethodEnum::GET, $testUri, [], $baseOptions],
             [$accessToken, RequestMethodEnum::GET, $testUri, ['test' => 'query'], ['query' => ['test' => 'query']] + $baseOptions],
             [$accessToken, RequestMethodEnum::DELETE, $testUri, [], $baseOptions],
-            [$accessToken, RequestMethodEnum::DELETE, $testUri, ['test' => 'query'], $baseOptions],
+            [$accessToken, RequestMethodEnum::DELETE, $testUri, ['test' => 'query'], ['query' => ['test' => 'query']] + $baseOptions],
             [$accessToken, RequestMethodEnum::PUT, $testUri, [], $baseOptions],
-            [$accessToken, RequestMethodEnum::PUT, $testUri, ['test' => 'query'], ['json' => ['test' => 'query']] + $baseOptions],
+            [$accessToken, RequestMethodEnum::PUT, $testUri, ['test' => 'query'], ['form_params' => ['test' => 'query']] + $baseOptions],
             [$accessToken, RequestMethodEnum::POST, $testUri, [], $baseOptions],
-            [$accessToken, RequestMethodEnum::POST, $testUri, ['test' => 'query'], ['json' => ['test' => 'query']] + $baseOptions],
+            [$accessToken, RequestMethodEnum::POST, $testUri, ['test' => 'query'], ['form_params' => ['test' => 'query']] + $baseOptions],
         ];
     }
 
@@ -82,7 +81,6 @@ class GuzzleClientTest extends TestCase
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
-        $baseOptions['headers'] = ['Content-Type' => 'application/json'];
         $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
         $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
