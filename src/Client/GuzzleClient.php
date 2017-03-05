@@ -79,6 +79,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
 
         switch ($requestMethod) {
             case RequestMethodEnum::GET:
+            case RequestMethodEnum::DELETE:
                 $options['query'] = $params;
                 break;
             case RequestMethodEnum::PUT:
@@ -86,8 +87,6 @@ class GuzzleClient extends BaseClient implements ClientInterface
                 if (count($params) > 0) {
                     $options['form_params'] = $params;
                 }
-                break;
-            case RequestMethodEnum::DELETE:
                 break;
             default:
                 throw new \InvalidArgumentException();
