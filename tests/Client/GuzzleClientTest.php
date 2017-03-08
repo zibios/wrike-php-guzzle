@@ -15,6 +15,7 @@ use GuzzleHttp\ClientInterface;
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 
 /**
  * Guzzle Client Test.
@@ -29,6 +30,15 @@ class GuzzleClientTest extends TestCase
         $client = new GuzzleClient();
         self::assertInstanceOf(GuzzleClient::class, $client);
         self::assertInstanceOf(ClientInterface::class, $client);
+    }
+
+    /**
+     * Test getResponseFormat.
+     */
+    public function test_getResponseFormat()
+    {
+        $client = new GuzzleClient();
+        self::assertSame(ResponseFormatEnum::PSR_RESPONSE, $client->getResponseFormat());
     }
 
     /**
