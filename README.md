@@ -1,7 +1,7 @@
 Wrike PHP GUZZLE
 ================================
 
-**Alpha version, first usable version around 2017-03-06**
+**Current version: 0.1.0, version 1.0.0 around 2017-04-01**
 
 Introduction
 ------------
@@ -9,6 +9,7 @@ Introduction
 **This is HTTP Client plugin for [Wrike PHP Library](https://github.com/zibios/wrike-php-library).**
 
 For general purpose please check [full configured Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk).
+For Symfony2 / Symfony3 please check full configured [Wrike bundle](https://github.com/zibios/wrike-bundle).
 For none standard purposes please check [generic Wrike PHP Library](https://github.com/zibios/wrike-php-library).
 
 Project status
@@ -50,7 +51,6 @@ Run PHPUnit tests:
 
 Usage
 ------------
-All \GuzzleHttp\Client methods plus methods for \Zibios\WrikePhpLibrary\Client\ClientInterface.
 
 ```php
 /**
@@ -66,7 +66,7 @@ $client = ClientFactory::create();
 $client->getResponseFormat();
 
 /**
- * @param string $requestMethod GT/POST/PUT/DELETE
+ * @param string $requestMethod GT/POST/PUT/DELETE/UPLOAD
  * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
  * @param array  $params        optional params for GET/POST request
  * @param string $accessToken   Access Token for Wrike access
@@ -87,6 +87,8 @@ Reference
 [Wrike PHP Library](https://github.com/zibios/wrike-php-library)
 
 [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
+
+[Symfony bundle](https://github.com/zibios/wrike-bundle)
 
 License
 -------
