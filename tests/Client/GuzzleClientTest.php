@@ -51,6 +51,22 @@ class GuzzleClientTest extends TestCase
             [$accessToken, RequestMethodEnum::PUT, $testUri, ['test' => 'query'], ['form_params' => ['test' => 'query']] + $baseOptions],
             [$accessToken, RequestMethodEnum::POST, $testUri, [], $baseOptions],
             [$accessToken, RequestMethodEnum::POST, $testUri, ['test' => 'query'], ['form_params' => ['test' => 'query']] + $baseOptions],
+            [$accessToken, RequestMethodEnum::UPLOAD, $testUri, [], $baseOptions],
+            [$accessToken, RequestMethodEnum::UPLOAD, $testUri,
+                ['name' => 'name', 'resource' => 'resource'],
+                [
+                    'multipart' => [
+                        [
+                            'contents' => 'resource',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'headers' => [
+                        'X-File-Name' => 'name',
+                        'Authorization' => sprintf('Bearer %s', $accessToken),
+                    ],
+                ] + $baseOptions,
+            ],
         ];
     }
 

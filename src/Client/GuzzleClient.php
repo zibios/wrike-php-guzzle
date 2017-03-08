@@ -80,12 +80,25 @@ class GuzzleClient extends BaseClient implements ClientInterface
         switch ($requestMethod) {
             case RequestMethodEnum::GET:
             case RequestMethodEnum::DELETE:
-                $options['query'] = $params;
+                if (count($params) > 0) {
+                    $options['query'] = $params;
+                }
                 break;
             case RequestMethodEnum::PUT:
             case RequestMethodEnum::POST:
                 if (count($params) > 0) {
                     $options['form_params'] = $params;
+                }
+                break;
+            case RequestMethodEnum::UPLOAD:
+                if (array_key_exists('resource', $params) && array_key_exists('name', $params)) {
+                    $options['headers']['X-File-Name'] = $params['name'];
+                    $options['multipart'] = [
+                        [
+                            'contents' => $params['resource'],
+                            'name' => $params['name'],
+                        ],
+                    ];
                 }
                 break;
             default:
