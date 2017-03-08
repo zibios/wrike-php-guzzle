@@ -85,7 +85,7 @@ class GuzzleClientTest extends TestCase
         $clientMock = self::getMock(GuzzleClient::class, ['request']);
         $clientMock->expects(self::any())
             ->method('request')
-            ->with(self::equalTo($requestMethod === RequestMethodEnum::UPLOAD?RequestMethodEnum::POST:$requestMethod), self::equalTo($path), self::equalTo($options));
+            ->with(self::equalTo($requestMethod === RequestMethodEnum::UPLOAD ? RequestMethodEnum::POST : $requestMethod), self::equalTo($path), self::equalTo($options));
 
         $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
     }
