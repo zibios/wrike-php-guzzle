@@ -53,8 +53,10 @@ class GuzzleClient extends BaseClient implements ClientInterface
     public function executeRequestForParams($requestMethod, $path, array $params, $accessToken)
     {
         RequestMethodEnum::assertIsValidValue($requestMethod);
-
         $options = $this->calculateOptionsForParams($requestMethod, $params, $accessToken);
+        if ($requestMethod === RequestMethodEnum::UPLOAD) {
+            $requestMethod = RequestMethodEnum::POST;
+        }
 
         return $this->request($requestMethod, $path, $options);
     }
