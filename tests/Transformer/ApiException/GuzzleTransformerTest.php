@@ -165,13 +165,29 @@ class GuzzleTransformerTest extends TestCase
         );
     }
 
+    public function test_emptyResponseException()
+    {
+        $expectedExceptionClass = ApiException::class;
+        $transformer = new GuzzleTransformer();
+
+        $requestMock = new Request('get', 'http://google.com');
+        /** @var BadResponseException $exception */
+        $exception = BadResponseException::create($requestMock, null);
+        $normalizedException = $transformer->transform($exception);
+        self::assertInstanceOf(
+            $expectedExceptionClass,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+        );
+    }
+
     public function test_unexpectedExceptionDuringTransform()
     {
         $testException = new \Exception();
         $transformer = new GuzzleTransformer();
 
-        $requestMock = self::getMock(RequestInterface::class);
-        $responseMock = self::getMock(ResponseInterface::class);
+        $requestMock = $this->getMockBuilder(RequestInterface::class)->getMock();
+        $responseMock = $this->getMockBuilder(ResponseInterface::class)->getMock();
         $responseMock->expects(self::any())
             ->method('getStatusCode')
             ->willReturn(0);
@@ -179,7 +195,7 @@ class GuzzleTransformerTest extends TestCase
             ->method('getBody')
             ->willThrowException($testException);
 
-        $exceptionMock = self::getMockForAbstractClass(
+        $exceptionMock = $this->getMockForAbstractClass(
             BadResponseException::class,
             ['test', $requestMock, $responseMock]
         );

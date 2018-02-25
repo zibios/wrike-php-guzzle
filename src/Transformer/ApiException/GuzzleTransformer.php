@@ -34,6 +34,9 @@ class GuzzleTransformer extends AbstractApiExceptionTransformer
         try {
             /** @var BadResponseException $exception */
             $errorResponse = $exception->getResponse();
+            if ($errorResponse === null) {
+                return new ApiException($exception);
+            }
             $errorStatusCode = $errorResponse->getStatusCode();
             $bodyString = (string) $errorResponse->getBody();
             $bodyArray = json_decode($bodyString, true);

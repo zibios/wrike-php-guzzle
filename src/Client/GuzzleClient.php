@@ -100,7 +100,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
                 }
                 break;
             default:
-                throw new \InvalidArgumentException();
+                throw new \InvalidArgumentException(sprintf('Request method "%s" not allowed!', $requestMethod));
         }
 
         return $options;

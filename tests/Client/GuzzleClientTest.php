@@ -91,8 +91,8 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForParams($accessToken, $requestMethod, $path, $params, $options)
     {
-        /** @var GuzzleClient $clientMock */
-        $clientMock = self::getMock(GuzzleClient::class, ['request']);
+        /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)->setMethods(['request'])->getMock();
         $clientMock->expects(self::any())
             ->method('request')
             ->with(self::equalTo($requestMethod === RequestMethodEnum::UPLOAD ? RequestMethodEnum::POST : $requestMethod), self::equalTo($path), self::equalTo($options));
@@ -129,9 +129,9 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForWrongParams($accessToken, $requestMethod, $path, $params, $options)
     {
-        self::setExpectedException(\InvalidArgumentException::class);
-        /** @var GuzzleClient $clientMock */
-        $clientMock = self::getMock(GuzzleClient::class, ['request']);
+        $this->setExpectedException(\InvalidArgumentException::class);
+        /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)->setMethods(['request'])->getMock();
         $clientMock->expects(self::any())
             ->method('request')
             ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
