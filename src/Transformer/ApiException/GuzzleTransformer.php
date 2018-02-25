@@ -27,14 +27,14 @@ class GuzzleTransformer extends AbstractApiExceptionTransformer
      */
     public function transform(\Exception $exception)
     {
-        if ($exception instanceof BadResponseException === false) {
+        if (false === $exception instanceof BadResponseException) {
             return new ApiException($exception);
         }
 
         try {
             /** @var BadResponseException $exception */
             $errorResponse = $exception->getResponse();
-            if ($errorResponse === null) {
+            if (null === $errorResponse) {
                 return new ApiException($exception);
             }
             $errorStatusCode = $errorResponse->getStatusCode();
