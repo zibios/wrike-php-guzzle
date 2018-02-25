@@ -2,7 +2,7 @@ Collection of all badges for package
 ====================================
 
 **Packagist**
-[![Packagist License](https://img.shields.io/packagist/l/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
+[![Packagist License](https://img.shields.io/packagist/l/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 [![Packagist Version](https://img.shields.io/packagist/v/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 

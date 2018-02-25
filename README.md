@@ -1,8 +1,6 @@
 Wrike PHP GUZZLE
 ================================
 
-**Current version: 0.1.0, version 1.0.0 around 2017-05-01**
-
 Introduction
 ------------
 
@@ -15,7 +13,7 @@ For none standard purposes please check [generic Wrike PHP Library](https://gith
 Project status
 --------------
 
-[![Packagist License](https://img.shields.io/packagist/l/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
+[![Packagist License](https://img.shields.io/packagist/l/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 [![Packagist Version](https://img.shields.io/packagist/v/zibios/wrike-php-guzzle.svg)](https://packagist.org/packages/zibios/wrike-php-guzzle)
 
