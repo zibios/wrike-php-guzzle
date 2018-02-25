@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.5",
-        "zibios/wrike-php-library": "^0.1",
+        "zibios/wrike-php-library": "^1.0",
         "guzzlehttp/guzzle": ">=4.0,<7.0"
     },
     "require-dev": {
