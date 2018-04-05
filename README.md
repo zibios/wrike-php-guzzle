@@ -64,7 +64,7 @@ $client = ClientFactory::create();
 $client->getResponseFormat();
 
 /**
- * @param string $requestMethod GT/POST/PUT/DELETE/UPLOAD
+ * @param string $requestMethod GET/POST/PUT/DELETE/UPLOAD
  * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
  * @param array  $params        optional params for GET/POST request
  * @param string $accessToken   Access Token for Wrike access
