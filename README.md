@@ -33,7 +33,7 @@ Project status
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b24d23368ad4971a0fbf47ed0457e86)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/8cb3af3ee1c8b8b2eb4f/maintainability)](https://codeclimate.com/github/zibios/wrike-php-guzzle/maintainability)
 
-**Branch 'master'**
+**Branch 'v1.x'**
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v1.x)
 [![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/v1.x)
