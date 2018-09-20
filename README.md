@@ -35,12 +35,12 @@ Project status
 
 **Branch 'master'**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
-[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/master)
-[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
-[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
-[![StyleCI](https://styleci.io/repos/81218835/shield?branch=master)](https://styleci.io/repos/81218835)
-[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v1.x)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/v1.x)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v1.x)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=v1.x)](https://travis-ci.org/zibios/wrike-php-guzzle)
+[![StyleCI](https://styleci.io/repos/81218835/shield?branch=v1.x)](https://styleci.io/repos/81218835)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=v1.x)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=v1.x)
 
 Installation
 ------------
