@@ -23,7 +23,7 @@ class ClientFactory
      *
      * @return GuzzleClient
      */
-    public static function create()
+    public static function create(): GuzzleClient
     {
         return new GuzzleClient();
     }

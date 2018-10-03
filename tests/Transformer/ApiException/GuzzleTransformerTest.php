@@ -38,7 +38,7 @@ class GuzzleTransformerTest extends TestCase
     /**
      * @return array
      */
-    public function responseExceptionsProvider()
+    public function responseExceptionsProvider(): array
     {
         return [
             // [errorStatusCode, errorStatusName, expectedExceptionClass]
@@ -73,7 +73,7 @@ class GuzzleTransformerTest extends TestCase
      *
      * @dataProvider responseExceptionsProvider
      */
-    public function test_wrikeExceptions($errorStatusCode, $errorStatusName, $expectedExceptionClass)
+    public function test_wrikeExceptions($errorStatusCode, $errorStatusName, $expectedExceptionClass): void
     {
         $transformer = new GuzzleTransformer();
 
@@ -99,7 +99,7 @@ class GuzzleTransformerTest extends TestCase
         );
     }
 
-    public function test_networkException()
+    public function test_networkException(): void
     {
         $transformer = new GuzzleTransformer();
 
@@ -123,7 +123,7 @@ class GuzzleTransformerTest extends TestCase
     /**
      * @return array
      */
-    public function malformedBodyProvider()
+    public function malformedBodyProvider(): array
     {
         return [
             // [errorStatusCode, body, expectedExceptionClass]
@@ -145,7 +145,7 @@ class GuzzleTransformerTest extends TestCase
      *
      * @dataProvider malformedBodyProvider
      */
-    public function test_malformedResponseBodyException($errorStatusCode, $body, $expectedExceptionClass)
+    public function test_malformedResponseBodyException($errorStatusCode, $body, $expectedExceptionClass): void
     {
         $transformer = new GuzzleTransformer();
 
@@ -165,7 +165,7 @@ class GuzzleTransformerTest extends TestCase
         );
     }
 
-    public function test_unexpectedExceptionDuringTransform()
+    public function test_unexpectedExceptionDuringTransform(): void
     {
         $testException = new \Exception();
         $transformer = new GuzzleTransformer();

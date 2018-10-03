@@ -25,7 +25,7 @@ class GuzzleClientTest extends TestCase
     /**
      * Test exception inheritance.
      */
-    public function test_ExtendProperClasses()
+    public function test_ExtendProperClasses(): void
     {
         $client = new GuzzleClient();
         self::assertInstanceOf(GuzzleClient::class, $client);
@@ -35,7 +35,7 @@ class GuzzleClientTest extends TestCase
     /**
      * Test getResponseFormat.
      */
-    public function test_getResponseFormat()
+    public function test_getResponseFormat(): void
     {
         $client = new GuzzleClient();
         self::assertSame(ResponseFormatEnum::PSR_RESPONSE, $client->getResponseFormat());
@@ -44,7 +44,7 @@ class GuzzleClientTest extends TestCase
     /**
      * @return array
      */
-    public function paramsProvider()
+    public function paramsProvider(): array
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
@@ -89,7 +89,7 @@ class GuzzleClientTest extends TestCase
      *
      * @dataProvider paramsProvider
      */
-    public function test_executeRequestForParams($accessToken, $requestMethod, $path, $params, $options)
+    public function test_executeRequestForParams($accessToken, $requestMethod, $path, $params, $options): void
     {
         /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */
         $clientMock = $this->getMockBuilder(GuzzleClient::class)->setMethods(['request'])->getMock();
@@ -103,7 +103,7 @@ class GuzzleClientTest extends TestCase
     /**
      * @return array
      */
-    public function wrongParamsProvider()
+    public function wrongParamsProvider(): array
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
@@ -127,7 +127,7 @@ class GuzzleClientTest extends TestCase
      *
      * @dataProvider wrongParamsProvider
      */
-    public function test_executeRequestForWrongParams($accessToken, $requestMethod, $path, $params, $options)
+    public function test_executeRequestForWrongParams($accessToken, $requestMethod, $path, $params, $options): void
     {
         $this->setExpectedException(\InvalidArgumentException::class);
         /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */

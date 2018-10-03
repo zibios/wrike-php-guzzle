@@ -72,7 +72,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
      *
      * @return array
      */
-    protected function calculateOptionsForParams($requestMethod, array $params, $accessToken)
+    protected function calculateOptionsForParams($requestMethod, array $params, $accessToken): array
     {
         $options = $this->prepareBaseOptions($accessToken);
         if (0 === \count($params)) {
@@ -113,7 +113,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
      *
      * @return array
      */
-    protected function prepareBaseOptions($accessToken)
+    protected function prepareBaseOptions($accessToken): array
     {
         AccessTokenValidator::assertIsValid($accessToken);
         $options = [];

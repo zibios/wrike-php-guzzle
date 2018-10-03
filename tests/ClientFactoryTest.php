@@ -20,7 +20,7 @@ use Zibios\WrikePhpGuzzle\ClientFactory;
  */
 class ClientFactoryTest extends TestCase
 {
-    public function test_create()
+    public function test_create(): void
     {
         $client = ClientFactory::create();
         self::assertInstanceOf(ClientInterface::class, $client);
