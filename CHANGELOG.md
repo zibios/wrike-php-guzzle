@@ -15,6 +15,9 @@
 
 ## v1.x
 
+### 1.1.0 (2018-10-07)
+* Roadmap introduced
+
 ## 1.0.0 (2018-02-25)
 * First stable release 
 
