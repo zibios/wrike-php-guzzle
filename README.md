@@ -12,11 +12,11 @@ Introduction
 
 Versions
 --------
-| Major Version                                               | Wrike API | PHP Compatibility                  | Initial release | Support                        |
-|:-----------------------------------------------------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
-| [V3](https://github.com/zibios/wrike-php-library/tree/v3.x) | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
-| [V2](https://github.com/zibios/wrike-php-library/tree/v2.x) | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
-| [V1](https://github.com/zibios/wrike-php-library/tree/v1.x) | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
+| Major Version                                              | Wrike API | PHP Compatibility                  | Initial release | Support                        |
+|:----------------------------------------------------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
+| [V3](https://github.com/zibios/wrike-php-guzzle/tree/v3.x) | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
+| [V2](https://github.com/zibios/wrike-php-guzzle/tree/v2.x) | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
+| [V1](https://github.com/zibios/wrike-php-guzzle/tree/v1.x) | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
 
 Project status
 --------------
