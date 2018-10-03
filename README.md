@@ -34,14 +34,14 @@ Project status
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b24d23368ad4971a0fbf47ed0457e86)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/8cb3af3ee1c8b8b2eb4f/maintainability)](https://codeclimate.com/github/zibios/wrike-php-guzzle/maintainability)
 
-**Branch 'v1.x'**
+**Branch 'v2.x'**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v1.x)
-[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/v1.x)
-[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v1.x)
-[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=v1.x)](https://travis-ci.org/zibios/wrike-php-guzzle)
-[![StyleCI](https://styleci.io/repos/81218835/shield?branch=v1.x)](https://styleci.io/repos/81218835)
-[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=v1.x)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=v1.x)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v2.x)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/v2.x)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v2.x)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=v2.x)](https://travis-ci.org/zibios/wrike-php-guzzle)
+[![StyleCI](https://styleci.io/repos/81218835/shield?branch=v2.x)](https://styleci.io/repos/81218835)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=v2.x)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=v2.x)
 
 Installation
 ------------
@@ -49,7 +49,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require zibios/wrike-php-guzzle "^1.0"
+$ composer require zibios/wrike-php-guzzle "^2.0"
 ```
 
 This command requires you to have Composer installed globally, as explained
