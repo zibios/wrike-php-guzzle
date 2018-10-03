@@ -32,7 +32,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
      * Generic format for HTTP client request method.
      *
      * @param string $requestMethod GET/POST/PUT/DELETE
-     * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
+     * @param string $path          full path to REST resource without domain, ex. 'contacts'
      * @param array  $params        optional params for GET/POST request
      * @param string $accessToken   Access Token for Wrike access
      *

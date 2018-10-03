@@ -87,24 +87,17 @@ Usage
 $client = ClientFactory::create();
 
 /**
- * @see \Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum
- *
- * @return string 'PsrResponse'
- */
-$client->getResponseFormat();
-
-/**
  * @param string $requestMethod GET/POST/PUT/DELETE/UPLOAD
- * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
+ * @param string $path          full path to REST resource without domain, ex. 'contacts'
  * @param array  $params        optional params for GET/POST request
  * @param string $accessToken   Access Token for Wrike access
  *
  * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum
  * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
  *
- * @return string|\Psr\Http\Message\ResponseInterface
+ * @return \Psr\Http\Message\ResponseInterface
  */
-$client->executeRequestForParams($requestMethod, $path, array $params, $accessToken);
+$client->executeRequestForParams($requestMethod, $path, $params, $accessToken);
 
 // + all methods from \GuzzleHttp\Client
 ```
