@@ -34,14 +34,14 @@ Project status
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b24d23368ad4971a0fbf47ed0457e86)](https://www.codacy.com/app/zibios/wrike-php-guzzle)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/8cb3af3ee1c8b8b2eb4f/maintainability)](https://codeclimate.com/github/zibios/wrike-php-guzzle/maintainability)
 
-**Branch 'v3.x'**
+**Branch 'master'**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v3.x)
-[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/v3.x)
-[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=v3.x)
-[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=v3.x)](https://travis-ci.org/zibios/wrike-php-guzzle)
-[![StyleCI](https://styleci.io/repos/81218835/shield?branch=v3.x)](https://styleci.io/repos/81218835)
-[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=v3.x)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=v3.x)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/build-status/master)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
+[![StyleCI](https://styleci.io/repos/81218835/shield?branch=master)](https://styleci.io/repos/81218835)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-guzzle/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-php-guzzle?branch=master)
 
 Installation
 ------------
