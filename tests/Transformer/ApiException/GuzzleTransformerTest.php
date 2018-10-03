@@ -90,12 +90,12 @@ class GuzzleTransformerTest extends TestCase
         self::assertInstanceOf(
             $expectedExceptionClass,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, \get_class($normalizedException))
         );
         self::assertInstanceOf(
             ApiException::class,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', ApiException::class, \get_class($normalizedException))
         );
     }
 
@@ -108,7 +108,7 @@ class GuzzleTransformerTest extends TestCase
         self::assertInstanceOf(
             ApiException::class,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', ApiException::class, \get_class($normalizedException))
         );
 
         $testException = new \Exception();
@@ -116,7 +116,7 @@ class GuzzleTransformerTest extends TestCase
         self::assertInstanceOf(
             ApiException::class,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', ApiException::class, \get_class($normalizedException))
         );
     }
 
@@ -161,7 +161,7 @@ class GuzzleTransformerTest extends TestCase
         self::assertInstanceOf(
             $expectedExceptionClass,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, \get_class($normalizedException))
         );
     }
 
@@ -179,6 +179,7 @@ class GuzzleTransformerTest extends TestCase
             ->method('getBody')
             ->willThrowException($testException);
 
+        /** @var \Exception $exceptionMock */
         $exceptionMock = $this->getMockForAbstractClass(
             BadResponseException::class,
             ['test', $requestMock, $responseMock]

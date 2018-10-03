@@ -75,7 +75,7 @@ class GuzzleClient extends BaseClient implements ClientInterface
     protected function calculateOptionsForParams($requestMethod, array $params, $accessToken)
     {
         $options = $this->prepareBaseOptions($accessToken);
-        if (0 === count($params)) {
+        if (0 === \count($params)) {
             return $options;
         }
 
