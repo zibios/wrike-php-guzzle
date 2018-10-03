@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-guzzle package.
  *
@@ -21,11 +23,11 @@ use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransfor
 class GuzzleTransformer extends AbstractApiExceptionTransformer
 {
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
-     * @return \Exception|ApiException
+     * @return \Throwable|ApiException
      */
-    public function transform(\Exception $exception)
+    public function transform(\Throwable $exception): \Throwable
     {
         if (false === $exception instanceof BadResponseException) {
             return new ApiException($exception);

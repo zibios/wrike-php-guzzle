@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-guzzle package.
  *
@@ -16,7 +18,7 @@ use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpLibrary\Api;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
-use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
+use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
 
 /**
@@ -24,14 +26,6 @@ use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
  */
 class GuzzleClient extends BaseClient implements ClientInterface
 {
-    /**
-     * @return string
-     */
-    public function getResponseFormat()
-    {
-        return ResponseFormatEnum::PSR_RESPONSE;
-    }
-
     /**
      * Request method.
      *
@@ -45,13 +39,17 @@ class GuzzleClient extends BaseClient implements ClientInterface
      * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum
      * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
      *
-     * @throws \Exception
-     * @throws \InvalidArgumentException
+     * @throws \Throwable
+     * @throws ApiException
      *
-     * @return string|ResponseInterface
+     * @return ResponseInterface
      */
-    public function executeRequestForParams($requestMethod, $path, array $params, $accessToken)
-    {
+    public function executeRequestForParams(
+        string $requestMethod,
+        string $path,
+        array $params,
+        string $accessToken
+    ): ResponseInterface {
         RequestMethodEnum::assertIsValidValue($requestMethod);
         $options = $this->calculateOptionsForParams($requestMethod, $params, $accessToken);
         if (RequestMethodEnum::UPLOAD === $requestMethod) {
@@ -66,13 +64,13 @@ class GuzzleClient extends BaseClient implements ClientInterface
      *
      * @param string $requestMethod
      * @param array  $params
-     * @param $accessToken
+     * @param string $accessToken
      *
      * @throws \InvalidArgumentException
      *
      * @return array
      */
-    protected function calculateOptionsForParams($requestMethod, array $params, $accessToken): array
+    protected function calculateOptionsForParams(string $requestMethod, array $params, string $accessToken): array
     {
         $options = $this->prepareBaseOptions($accessToken);
         if (0 === \count($params)) {
@@ -107,13 +105,13 @@ class GuzzleClient extends BaseClient implements ClientInterface
     }
 
     /**
-     * @param $accessToken
+     * @param string $accessToken
      *
      * @throws \InvalidArgumentException
      *
      * @return array
      */
-    protected function prepareBaseOptions($accessToken): array
+    protected function prepareBaseOptions(string $accessToken): array
     {
         AccessTokenValidator::assertIsValid($accessToken);
         $options = [];

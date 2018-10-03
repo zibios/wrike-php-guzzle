@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-guzzle package.
  *
@@ -12,10 +14,10 @@
 namespace Zibios\WrikePhpGuzzle\Tests\Client;
 
 use GuzzleHttp\ClientInterface;
+use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpGuzzle\Client\GuzzleClient;
 use Zibios\WrikePhpGuzzle\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
-use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 
 /**
  * Guzzle Client Test.
@@ -33,22 +35,13 @@ class GuzzleClientTest extends TestCase
     }
 
     /**
-     * Test getResponseFormat.
-     */
-    public function test_getResponseFormat(): void
-    {
-        $client = new GuzzleClient();
-        self::assertSame(ResponseFormatEnum::PSR_RESPONSE, $client->getResponseFormat());
-    }
-
-    /**
      * @return array
      */
     public function paramsProvider(): array
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
-        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
+        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v4/';
         $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
         return [
@@ -91,13 +84,17 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForParams($accessToken, $requestMethod, $path, $params, $options): void
     {
+        /** @var ResponseInterface $responseMock */
+        $responseMock = $this->getMockBuilder(ResponseInterface::class)->getMock();
         /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */
         $clientMock = $this->getMockBuilder(GuzzleClient::class)->setMethods(['request'])->getMock();
         $clientMock->expects(self::any())
             ->method('request')
-            ->with(self::equalTo(RequestMethodEnum::UPLOAD === $requestMethod ? RequestMethodEnum::POST : $requestMethod), self::equalTo($path), self::equalTo($options));
+            ->with(self::equalTo(RequestMethodEnum::UPLOAD === $requestMethod ? RequestMethodEnum::POST : $requestMethod), self::equalTo($path), self::equalTo($options))
+        ->willReturn($responseMock);
 
-        $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
+        $response = $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -107,13 +104,12 @@ class GuzzleClientTest extends TestCase
     {
         $accessToken = 'testBearerToken';
         $testUri = '/test/uri';
-        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v3/';
+        $baseOptions['base_uri'] = 'https://www.wrike.com/api/v4/';
         $baseOptions['headers']['Authorization'] = sprintf('Bearer %s', $accessToken);
 
         return [
             // [accessToken, requestMethod, path, params, options]
             ['', RequestMethodEnum::GET, $testUri, [], $baseOptions],
-            [null, RequestMethodEnum::GET, $testUri, [], $baseOptions],
             [$accessToken, 'WRONG_METHOD', $testUri, [], $baseOptions],
         ];
     }
@@ -129,13 +125,20 @@ class GuzzleClientTest extends TestCase
      */
     public function test_executeRequestForWrongParams($accessToken, $requestMethod, $path, $params, $options): void
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
         /** @var GuzzleClient|\PHPUnit_Framework_MockObject_MockObject $clientMock */
         $clientMock = $this->getMockBuilder(GuzzleClient::class)->setMethods(['request'])->getMock();
         $clientMock->expects(self::any())
             ->method('request')
             ->with(self::equalTo($requestMethod), self::equalTo($path), self::equalTo($options));
 
-        $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
+        try {
+            $clientMock->executeRequestForParams($requestMethod, $path, $params, $accessToken);
+        } catch (\Throwable $e) {
+            $this->assertInstanceOf(\InvalidArgumentException::class, $e);
+
+            return;
+        }
+
+        $this->assertTrue(false, 'Exception should be throw!');
     }
 }
